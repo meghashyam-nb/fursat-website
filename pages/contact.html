@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Fursat</title>
+  <link rel="stylesheet" href="https://use.typekit.net/rkl7bpr.css">
+  <link rel="stylesheet" href="../assets/product.css">
+  <style>
+    .page-hero { background:var(--cream); padding:80px 24px 60px; text-align:center; }
+    .page-hero h1 { font-family:var(--font-head); font-size:clamp(2rem,5vw,3.5rem); color:var(--ink); margin-bottom:16px; }
+    .page-hero p { color:var(--ink); opacity:.6; font-size:1rem; }
+    .contact-grid { max-width:900px; margin:0 auto; padding:60px 24px 100px; display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+    @media(max-width:640px) { .contact-grid { grid-template-columns:1fr; gap:40px; } }
+    .contact-info h2, .contact-form h2 { font-family:var(--font-head); font-size:1.5rem; color:var(--ink); margin-bottom:24px; }
+    .contact-method { display:flex; align-items:flex-start; gap:16px; margin-bottom:28px; }
+    .contact-method .icon { font-size:1.5rem; flex-shrink:0; margin-top:2px; }
+    .contact-method h3 { font-family:var(--font-head); font-size:1rem; color:var(--ink); margin-bottom:6px; }
+    .contact-method p, .contact-method a { font-family:var(--font-body); font-size:.95rem; color:var(--ink); opacity:.75; text-decoration:none; line-height:1.5; display:block; }
+    .contact-method a:hover { opacity:1; color:var(--olive); }
+    .form-group { margin-bottom:20px; }
+    .form-group label { display:block; font-family:var(--font-body); font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); margin-bottom:8px; }
+    .form-group input, .form-group textarea {
+      width:100%; padding:12px 16px; border:1px solid #d5d0c5; border-radius:3px;
+      font-family:var(--font-body); font-size:.95rem; color:var(--ink); background:#fff;
+      box-sizing:border-box; transition:border .2s;
+    }
+    .form-group textarea { height:120px; resize:vertical; }
+    .form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--olive); }
+    .btn-submit {
+      width:100%; padding:14px; background:var(--ink); color:#fff; border:none;
+      font-family:var(--font-body); font-size:.9rem; letter-spacing:.12em; text-transform:uppercase;
+      cursor:pointer; border-radius:3px; transition:background .2s;
+    }
+    .btn-submit:hover { background:var(--olive); }
+    .form-success { display:none; background:#eef3ea; padding:20px; border-radius:4px; text-align:center; font-family:var(--font-body); color:var(--olive); }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+      <a href="/" class="logo-link"><span class="logo-text">Fursat</span></a>
+      <nav class="nav-left">
+        <a href="/collections/all.html">Shop</a>
+        <a href="/collections/all.html">Collections</a>
+        <a href="/pages/journal.html">Journal</a>
+        <a href="/pages/about.html">About</a>
+      </nav>
+      <div class="header-right">
+        <button class="cart-btn" id="cart-btn" aria-label="Cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" style="display:none">
+      <a href="/collections/all.html">Shop</a>
+      <a href="/collections/all.html">Collections</a>
+      <a href="/pages/journal.html">Journal</a>
+      <a href="/pages/about.html">About</a>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you. Reach out any time.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+
+      <div class="contact-method">
+        <div class="icon">💬</div>
+        <div>
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/919739283637" target="_blank">+91 97392 83637</a>
+          <p>Fastest way to reach us — usually respond within an hour.</p>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="icon">✉️</div>
+        <div>
+          <h3>Email</h3>
+          <a href="mailto:labelfursat@gmail.com">labelfursat@gmail.com</a>
+          <p>For queries, collaborations, or wholesale enquiries.</p>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="icon">📸</div>
+        <div>
+          <h3>Instagram</h3>
+          <a href="https://instagram.com/fursatlabel" target="_blank">@fursatlabel</a>
+          <p>Follow us for new arrivals and behind-the-scenes.</p>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="icon">📦</div>
+        <div>
+          <h3>Orders &amp; Returns</h3>
+          <p>See our <a href="/pages/refund-policy.html" style="color:var(--olive)">Return Policy</a> or <a href="/pages/shipping-policy.html" style="color:var(--olive)">Shipping Policy</a> for details.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h2>Send a Message</h2>
+      <div class="form-success" id="form-success">
+        ✓ Message sent! We'll get back to you soon.
+      </div>
+      <form id="contact-form">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" required placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" required placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea name="message" required placeholder="How can we help?"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">Fursat</p>
+          <p class="footer-tagline">Luxury, handwoven, slow made clothing crafted for you.</p>
+          <a href="https://instagram.com/fursatlabel" target="_blank" rel="noopener" class="footer-insta">@fursatlabel</a>
+        </div>
+        <div>
+          <p class="footer-col-title">Shop</p>
+          <ul><li><a href="/collections/new-arrivals.html">New Arrivals</a></li><li><a href="/collections/women.html">Women</a></li><li><a href="/collections/men.html">Men</a></li><li><a href="/collections/best-sellers.html">Best Sellers</a></li><li><a href="/collections/pause.html">Pause</a></li></ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Help</p>
+          <ul><li><a href="https://wa.me/919739283637" target="_blank">WhatsApp Us</a></li><li><a href="mailto:labelfursat@gmail.com">Email Us</a></li><li><a href="/pages/shipping-policy.html">Shipping Policy</a></li><li><a href="/pages/refund-policy.html">Returns</a></li></ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Info</p>
+          <ul><li><a href="/pages/about.html">About Us</a></li><li><a href="/pages/size-guide.html">Size Guide</a></li><li><a href="/pages/privacy-policy.html">Privacy Policy</a></li><li><a href="/pages/terms-of-service.html">Terms</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 Fursat. Made with care in India.</p></div>
+    </div>
+  </footer>
+
+  <a class="wa-fab" href="https://wa.me/919739283637" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="../assets/cart.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = this.name.value;
+      const email = this.email.value;
+      const message = this.message.value;
+      const wa = `https://wa.me/919739283637?text=${encodeURIComponent(`Hi Fursat, my name is ${name} (${email}).\n\n${message}`)}`;
+      window.open(wa, '_blank');
+      document.getElementById('form-success').style.display = 'block';
+      this.reset();
+    });
+  </script>
+</body>
+</html>

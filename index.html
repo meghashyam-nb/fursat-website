@@ -1,0 +1,1188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fursat — Luxury Handwoven Clothing</title>
+  <meta name="description" content="Luxury, handwoven, slow made clothing crafted for you. Ethically made · Supple fabrics · Made to order for zero waste." />
+  <link rel="canonical" href="/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Fursat — Luxury Handwoven Clothing" />
+  <meta property="og:description" content="Luxury, handwoven, slow made clothing crafted for you." />
+  <meta property="og:url" content="https://fursat.shop/" />
+
+  <!-- Fonts: Calluna (Adobe Typekit) -->
+  <link rel="stylesheet" href="https://use.typekit.net/rkl7bpr.css" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────── */
+    :root {
+      --cream:       #F5F0E6;
+      --cream-mid:   #EDE5D8;
+      --cream-dark:  #D9CEB8;
+      --ink:         #1A1814;
+      --ink-2:       #3D3830;
+      --muted:       #8A7F70;
+      --olive:       #5A5E3A;
+      --olive-lt:    #E8EAD8;
+      --border:      #DDD5C4;
+      --white:       #FFFFFF;
+      --font-body:   calluna-sans, "Gill Sans", sans-serif;
+      --font-head:   calluna, Georgia, serif;
+      --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+    /* ─── ANNOUNCEMENT BAR ────────────────────────── */
+    .ann-bar {
+      background: var(--ink);
+      color: var(--cream);
+      text-align: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 10px 48px;
+      position: relative;
+    }
+    .ann-bar a { color: var(--cream); text-decoration: underline; margin-left: 8px; }
+    .ann-close {
+      position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: var(--cream);
+      font-size: 1rem; padding: 4px; opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .ann-close:hover { opacity: 1; }
+
+    /* ─── HEADER ──────────────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 600;
+      background: transparent;
+      transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    }
+    header.scrolled {
+      background: rgba(245, 240, 230, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-left { display: flex; align-items: center; gap: 28px; }
+    .nav-left a {
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 600; color: var(--ink-2);
+      transition: color 0.2s;
+    }
+    .nav-left a:hover { color: var(--olive); }
+
+    .logo {
+      position: absolute; left: 50%; transform: translateX(-50%);
+    }
+    .logo svg { height: 36px; width: auto; }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-icon {
+      background: none; border: none;
+      font-size: 1rem; color: var(--ink);
+      display: flex; align-items: center;
+      transition: opacity 0.2s;
+    }
+    .nav-icon:hover { opacity: 0.6; }
+    .cart-count {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--ink); color: var(--cream);
+      font-size: 0.6rem; font-weight: 700;
+      margin-left: 2px;
+    }
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--ink); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed;
+      inset: 0; top: 72px; z-index: 500;
+      background: var(--cream);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px; padding: 32px 24px;
+      opacity: 0; transform: translateY(-8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .mobile-menu.open { opacity: 1; transform: none; }
+    .mobile-menu a {
+      font-size: 1.5rem; font-family: var(--font-head); font-weight: 400;
+      color: var(--ink); padding: 14px 0; width: 100%; text-align: center;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--olive); }
+
+    /* ─── HERO SLIDESHOW ──────────────────────────── */
+    .hero {
+      position: relative; height: 100vh; min-height: 580px;
+      overflow: hidden; background: var(--ink-2);
+    }
+    .hero-slides { display: flex; height: 100%; transition: transform 0.9s var(--ease); }
+    .hero-slide {
+      min-width: 100%; height: 100%; position: relative; flex-shrink: 0;
+    }
+    .hero-slide img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,24,20,0.55) 0%, rgba(26,24,20,0.1) 60%, transparent 100%);
+    }
+    .hero-content {
+      position: absolute; bottom: 80px; left: 0; right: 0;
+      text-align: center; color: var(--cream); padding: 0 24px;
+    }
+    .hero-content h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      font-weight: 400; line-height: 1.2;
+      letter-spacing: 0.01em;
+      margin-bottom: 16px;
+      max-width: 720px; margin-left: auto; margin-right: auto;
+    }
+    .hero-content p {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      opacity: 0.8; margin-bottom: 32px;
+    }
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--cream); color: var(--cream);
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 600; padding: 14px 36px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-outline:hover { background: var(--cream); color: var(--ink); }
+
+    .hero-dots {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 2;
+    }
+    .hero-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(245,240,230,0.4);
+      border: none; padding: 0;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .hero-dot.active { background: var(--cream); transform: scale(1.3); }
+
+    /* ─── SECTION SHARED ──────────────────────────── */
+    .sec-eyebrow {
+      font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 700; color: var(--muted); margin-bottom: 14px;
+    }
+    .sec-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400; letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+    .sec-sub { font-size: 0.9rem; color: var(--muted); margin-top: 10px; line-height: 1.75; }
+    .sec-head { margin-bottom: 48px; }
+
+    .btn-dark {
+      display: inline-block;
+      background: var(--ink); color: var(--cream);
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 600; padding: 14px 36px;
+      transition: background 0.3s;
+    }
+    .btn-dark:hover { background: var(--ink-2); }
+
+    .btn-text {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 600; color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-text:hover { color: var(--olive); border-color: var(--olive); }
+
+    /* ─── NEW ARRIVALS ────────────────────────────── */
+    .new-arrivals { padding: 80px 0; background: var(--cream); }
+    .arrivals-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 40px; flex-wrap: wrap; gap: 16px;
+    }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    }
+    .product-card { position: relative; }
+    .product-card-img {
+      aspect-ratio: 3/4; overflow: hidden;
+      background: var(--cream-mid); margin-bottom: 16px;
+      position: relative;
+    }
+    .product-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+    .product-card:hover .product-card-img img { transform: scale(1.05); }
+    .product-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--ink); color: var(--cream);
+      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 700; padding: 5px 10px;
+    }
+    .product-name {
+      font-family: var(--font-head);
+      font-size: 1rem; font-weight: 400;
+      margin-bottom: 6px; letter-spacing: 0.02em;
+    }
+    .product-price { font-size: 0.85rem; color: var(--muted); letter-spacing: 0.04em; }
+    .product-price strong { color: var(--ink); font-weight: 600; margin-right: 8px; }
+
+    /* ─── BRAND STATEMENT ─────────────────────────── */
+    .statement {
+      padding: 120px 0;
+      background: var(--olive);
+      text-align: center;
+    }
+    .statement-inner { max-width: 900px; margin: 0 auto; }
+    .statement h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3.5vw, 3.2rem);
+      font-weight: 400; color: var(--cream);
+      line-height: 1.3; letter-spacing: 0.02em;
+    }
+    .statement-icon { margin: 40px auto 0; }
+    .statement-icon svg { width: 60px; height: auto; opacity: 0.5; color: var(--cream); }
+
+    /* ─── COLLECTIONS ─────────────────────────────── */
+    .collections { padding: 80px 0; background: var(--cream); }
+    .collections-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .collection-tile {
+      position: relative; overflow: hidden;
+      aspect-ratio: 2/3;
+      background: var(--cream-mid);
+    }
+    .collection-tile img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s var(--ease);
+    }
+    .collection-tile:hover img { transform: scale(1.06); }
+    .collection-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,24,20,0.6) 0%, transparent 60%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-end;
+      padding: 36px 24px;
+      transition: background 0.4s;
+    }
+    .collection-tile:hover .collection-overlay {
+      background: linear-gradient(to top, rgba(26,24,20,0.7) 0%, rgba(26,24,20,0.1) 60%);
+    }
+    .collection-name {
+      font-family: var(--font-head);
+      font-size: 1.6rem; font-weight: 400;
+      color: var(--cream); letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+
+    /* ─── FEATURES ────────────────────────────────── */
+    .features { padding: 80px 0 100px; background: var(--cream-mid); }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 40px; text-align: center;
+    }
+    .feature-item {}
+    .feature-img { width: 80px; height: 80px; margin: 0 auto 24px; }
+    .feature-img img { width: 100%; height: 100%; object-fit: contain; }
+    .feature-title {
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 14px; color: var(--ink);
+    }
+    .feature-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
+
+    /* ─── BANNER ──────────────────────────────────── */
+    .banner {
+      position: relative; height: 70vh; min-height: 480px;
+      overflow: hidden; background: var(--ink-2);
+    }
+    .banner img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.1s linear;
+    }
+    .banner-overlay {
+      position: absolute; inset: 0;
+      background: rgba(26,24,20,0.45);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 24px;
+    }
+    .banner-eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(245,240,230,0.7); margin-bottom: 16px;
+    }
+    .banner h2 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 400; color: var(--cream);
+      letter-spacing: 0.04em; margin-bottom: 18px;
+      text-transform: capitalize;
+    }
+    .banner p {
+      font-size: 0.9rem; color: rgba(245,240,230,0.8);
+      max-width: 560px; line-height: 1.75; margin-bottom: 32px;
+    }
+
+    /* ─── JOURNAL ─────────────────────────────────── */
+    .journal { padding: 100px 0; background: var(--olive); }
+    .journal .sec-title { color: var(--cream); }
+    .journal .sec-eyebrow { color: rgba(245,240,230,0.5); }
+    .journal-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 48px; flex-wrap: wrap; gap: 16px;
+    }
+    .journal .btn-text { color: var(--cream); border-color: var(--cream); }
+    .journal .btn-text:hover { color: var(--cream-dark); border-color: var(--cream-dark); }
+    .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .journal-card { }
+    .journal-card-img {
+      aspect-ratio: 4/5; overflow: hidden; background: var(--ink-2);
+      margin-bottom: 20px; position: relative;
+    }
+    .journal-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+    .journal-card:hover .journal-card-img img { transform: scale(1.05); }
+    .journal-date {
+      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(245,240,230,0.5); margin-bottom: 8px;
+    }
+    .journal-title {
+      font-family: var(--font-head);
+      font-size: 1.05rem; font-weight: 400;
+      color: var(--cream); line-height: 1.4;
+    }
+
+    /* ─── PARALLAX ────────────────────────────────── */
+    .parallax-wrap {
+      height: 60vh; overflow: hidden; position: relative;
+      background: var(--ink-2);
+    }
+    .parallax-img {
+      width: 100%; height: 130%; object-fit: cover;
+      position: absolute; top: -15%;
+      transform: translateZ(0);
+    }
+
+    /* ─── VIDEO BANNER ────────────────────────────── */
+    .video-banner {
+      position: relative; height: 100vh; min-height: 540px;
+      overflow: hidden; background: var(--ink);
+    }
+    .video-banner video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .video-fallback {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .video-overlay {
+      position: absolute; inset: 0;
+      background: rgba(26,24,20,0.4);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 24px;
+    }
+    .video-overlay h2 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 400; color: var(--cream);
+      letter-spacing: 0.04em; margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .video-overlay p {
+      font-size: 0.9rem; color: rgba(245,240,230,0.75);
+      max-width: 480px; line-height: 1.8; margin-bottom: 36px;
+    }
+
+    /* ─── NEWSLETTER ──────────────────────────────── */
+    .newsletter { padding: 100px 0; background: var(--cream); text-align: center; }
+    .newsletter-inner { max-width: 560px; margin: 0 auto; }
+    .newsletter h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400; margin-bottom: 14px;
+    }
+    .newsletter p { font-size: 0.9rem; color: var(--muted); margin-bottom: 36px; line-height: 1.7; }
+    .newsletter-form { display: flex; gap: 0; max-width: 440px; margin: 0 auto; }
+    .newsletter-form input {
+      flex: 1; border: 1px solid var(--border); border-right: none;
+      background: var(--white); padding: 14px 18px;
+      font-family: inherit; font-size: 0.88rem; color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .newsletter-form input::placeholder { color: var(--muted); }
+    .newsletter-form input:focus { border-color: var(--ink); }
+    .newsletter-form button {
+      background: var(--ink); color: var(--cream);
+      border: 1px solid var(--ink); padding: 14px 24px;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover { background: var(--ink-2); }
+    .newsletter-consent {
+      font-size: 0.72rem; color: var(--muted); margin-top: 14px; line-height: 1.6;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--ink); color: rgba(245,240,230,0.7);
+      padding: 80px 0 40px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; padding-bottom: 60px;
+      border-bottom: 1px solid rgba(245,240,230,0.1);
+    }
+    .footer-brand .logo-footer svg { height: 32px; width: auto; color: var(--cream); margin-bottom: 20px; }
+    .footer-brand p {
+      font-size: 0.85rem; line-height: 1.75; max-width: 240px;
+      color: rgba(245,240,230,0.55);
+    }
+    .footer-social { display: flex; gap: 16px; margin-top: 24px; }
+    .footer-social a {
+      width: 36px; height: 36px; border: 1px solid rgba(245,240,230,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; color: rgba(245,240,230,0.6);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-social a:hover { border-color: var(--cream); color: var(--cream); }
+    .footer-col h5 {
+      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 700; color: var(--cream); margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a {
+      font-size: 0.85rem; color: rgba(245,240,230,0.55);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom {
+      padding-top: 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 0.75rem; color: rgba(245,240,230,0.35);
+    }
+    .footer-bottom a { color: rgba(245,240,230,0.35); transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--cream); }
+    .footer-payment { display: flex; gap: 8px; align-items: center; }
+    .payment-badge {
+      background: rgba(245,240,230,0.08);
+      border: 1px solid rgba(245,240,230,0.12);
+      border-radius: 3px; padding: 3px 8px;
+      font-size: 0.65rem; letter-spacing: 0.05em;
+      color: rgba(245,240,230,0.4);
+    }
+
+    /* ─── WHATSAPP FAB ────────────────────────────── */
+    .wa-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.5);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s;
+    }
+    .wa-fab:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,0.6); }
+    .wa-fab svg { width: 28px; height: 28px; fill: #fff; }
+    .wa-ring {
+      position: absolute; inset: -7px; border-radius: 50%;
+      border: 2px solid rgba(37,211,102,0.28);
+      animation: ring-pulse 2.6s ease-in-out infinite;
+    }
+    @keyframes ring-pulse {
+      0%,100% { transform: scale(1); opacity: 0.9; }
+      60%      { transform: scale(1.22); opacity: 0; }
+    }
+
+    /* ─── CART DRAWER ─────────────────────────────── */
+    .cart-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+      z-index: 700; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-drawer {
+      position: fixed; right: 0; top: 0; bottom: 0; width: 400px;
+      max-width: 90vw; background: var(--cream); z-index: 800;
+      transform: translateX(100%); transition: transform 0.4s var(--ease);
+      display: flex; flex-direction: column;
+    }
+    .cart-drawer.open { transform: none; }
+    .cart-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 28px; border-bottom: 1px solid var(--border);
+    }
+    .cart-header h3 {
+      font-family: var(--font-head); font-size: 1.2rem; font-weight: 400;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .cart-close {
+      background: none; border: none; font-size: 1.4rem; color: var(--ink);
+      transition: opacity 0.2s;
+    }
+    .cart-close:hover { opacity: 0.5; }
+    .cart-body { flex: 1; overflow-y: auto; padding: 28px; }
+    .cart-empty {
+      text-align: center; padding: 60px 0;
+      font-size: 0.9rem; color: var(--muted); line-height: 1.7;
+    }
+    .cart-empty svg { width: 48px; height: 48px; opacity: 0.25; margin: 0 auto 16px; }
+    .cart-footer { padding: 24px 28px; border-top: 1px solid var(--border); }
+    .cart-total {
+      display: flex; justify-content: space-between;
+      font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;
+      letter-spacing: 0.04em;
+    }
+    .cart-checkout {
+      display: block; width: 100%;
+      background: var(--ink); color: var(--cream);
+      border: none; padding: 16px;
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .cart-checkout:hover { background: var(--ink-2); }
+
+    /* ─── SCROLL REVEALS ──────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.2s; }
+    .reveal.d3 { transition-delay: 0.3s; }
+    .reveal.d4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-left { display: none; }
+      .hamburger { display: flex; }
+      .logo { position: static; transform: none; }
+      .header-inner { position: relative; }
+      .collections-grid { grid-template-columns: 1fr; }
+      .collection-tile { aspect-ratio: 3/2; }
+      .journal-grid { grid-template-columns: 1fr; }
+      .banner { height: 55vh; }
+      .video-banner { height: 70vh; }
+      .hero { height: 85vh; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .container { padding: 0 20px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form input { border-right: 1px solid var(--border); border-bottom: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ██ ANNOUNCEMENT ██ -->
+<div class="ann-bar" id="ann-bar">
+  Made to order for zero waste — Ethically crafted in India
+  <a href="#newsletter">Subscribe for 10% off →</a>
+  <button class="ann-close" onclick="document.getElementById('ann-bar').remove()" aria-label="Close">×</button>
+</div>
+
+<!-- ██ HEADER ██ -->
+<header id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Left nav -->
+      <nav class="nav-left" aria-label="Primary">
+        <a href="/collections/all.html">Shop</a>
+        <a href="/collections/all.html">Collections</a>
+        <a href="/pages/journal.html">Journal</a>
+        <a href="/pages/about.html">About</a>
+      </nav>
+
+      <!-- Logo -->
+      <a href="/" class="logo" aria-label="Fursat home">
+        <svg style="width:100%" fill="none" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" viewBox="0 0 350 210" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-151.470703-514.117187)"><path d="M177.640625,522.050781c-11.351563,0-20.585937,9.242188-20.585937,20.597657v173.527343h11.285156v-106.796875h29.890625v-11.292968h-29.890625v-55.4375c0-5.132813,4.171875-9.304688,9.300781-9.304688c5.132813,0,9.304687,4.171875,9.304687,9.304688v38.445312h11.285157v-38.445312c0-11.355469-9.234375-20.597657-20.589844-20.597657Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M246.472656,704.882812h-9.300781c-5.132813,0-9.300781-4.171874-9.300781-9.308593v-97.496094h-11.285156v97.496094c0,11.359375,9.234374,20.601562,20.585937,20.601562h20.589844v-118.089843h-11.289063v106.804687-.007813Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M296.703125,598.085938h-20.589844v118.089843h11.289063v-106.796875h9.300781c5.132813,0,9.300781,4.171875,9.300781,9.304688v14.152344h11.285156v-14.152344c0-11.355469-9.234374-20.597656-20.585937-20.597656Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M356.230469,598.085938c-11.351563,0-20.585938,9.242187-20.585938,20.597656v44.097656h29.886719v32.804688c0,5.132812-4.167969,9.304687-9.300781,9.304687s-9.300781-4.171875-9.300781-9.304687v-14.152344h-11.285157v14.152344c0,11.355468,9.234375,20.597656,20.585938,20.597656c11.355469,0,20.589843-9.242188,20.589843-20.597656v-44.097657h-29.890624v-32.804687c0-5.132813,4.167968-9.304688,9.300781-9.304688s9.300781,4.171875,9.300781,9.304688v14.144531h11.289062v-14.144531c0-11.355469-9.234374-20.597656-20.589843-20.597656Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M415.761719,598.085938c-11.351563,0-20.589844,9.242187-20.589844,20.597656v14.144531h11.289063v-14.144531c0-5.132813,4.167968-9.304688,9.300781-9.304688s9.300781,4.171875,9.300781,9.304688v32.804687h-29.890625v44.097657c0,11.355468,9.238281,20.597656,20.589844,20.597656h20.585937v-97.5c0-11.355469-9.234375-20.597656-20.585937-20.597656ZM425.0625,704.882812h-9.300781c-5.125,0-9.300781-4.171874-9.300781-9.308593v-32.800781h18.601562v42.109374Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M495.886719,581.105469v-11.292969h-29.890625v-47.761719c0,0-11.292969,0-11.292969,0v47.753907h-238.59375v11.289062h238.59375v114.480469c0,11.359375,9.234375,20.601562,20.589844,20.601562c11.351562,0,20.585937-9.242187,20.585937-20.601562v-38.445313h-11.285156v38.445313c0,5.136719-4.171875,9.308593-9.300781,9.308593-5.132813,0-9.304688-4.171874-9.304688-9.308593v-114.46875h29.898438Zm0,0" fill-rule="evenodd" fill="currentColor"/></g></svg>
+      </a>
+
+      <!-- Right -->
+      <div class="nav-right">
+        <button class="nav-icon" id="search-btn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <a href="/pages/contact.html" class="nav-icon" aria-label="Account">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <button class="nav-icon" id="cart-btn" aria-label="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count" id="cart-count" aria-label="0 items">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="/collections/all.html">Shop</a>
+  <a href="/collections/all.html">Collections</a>
+  <a href="/pages/journal.html">Journal</a>
+  <a href="/pages/about.html">About</a>
+</div>
+
+<!-- ██ HERO SLIDESHOW ██ -->
+<section class="hero" aria-label="Featured collection slideshow">
+  <div class="hero-slides" id="hero-slides">
+
+    <!-- Slide 1 -->
+    <div class="hero-slide">
+      <picture>
+        <source media="(max-width:768px)" srcset="assets/SMR08725m.jpg" />
+        <img
+          src="assets/SMR08790.jpg"
+          alt="Luxury handwoven clothing — Fursat collection"
+          loading="eager"
+        />
+      </picture>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Luxury, Handwoven, Slow Made Clothing, Crafted for You</h1>
+        <p>Ethically made · Supple fabrics · Made to order for zero waste</p>
+        <a href="/collections/all.html" class="btn-outline">Explore Collections</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="hero-slide">
+      <picture>
+        <source media="(max-width:768px)" srcset="assets/SMR08521.jpg" />
+        <img
+          src="assets/SMR08843.jpg"
+          alt="Fursat handwoven textiles"
+          loading="lazy"
+        />
+      </picture>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Luxury, Handwoven, Slow Made Clothing, Crafted for You</h1>
+        <p>Ethically made · Supple fabrics · Made to order for zero waste</p>
+        <a href="/collections/all.html" class="btn-outline">Explore Collections</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="hero-dots" role="tablist" aria-label="Slide controls">
+    <button class="hero-dot active" data-slide="0" aria-label="Slide 1" role="tab" aria-selected="true"></button>
+    <button class="hero-dot" data-slide="1" aria-label="Slide 2" role="tab" aria-selected="false"></button>
+  </div>
+</section>
+
+<!-- ██ NEW ARRIVALS ██ -->
+<section class="new-arrivals" id="new-arrivals">
+  <div class="container">
+    <div class="arrivals-header reveal">
+      <div>
+        <p class="sec-eyebrow">Just landed</p>
+        <h2 class="sec-title">New Arrivals</h2>
+      </div>
+      <a href="/collections/pause.html" class="btn-text">View all →</a>
+    </div>
+    <div class="products-grid">
+
+      <!-- Product 1 -->
+      <article class="product-card reveal d1">
+        <a href="/collections/pause.html" aria-label="Handwoven Chanderi Kurta">
+          <div class="product-card-img">
+            <!-- Replace with your product image -->
+            <img src="assets/SMR08687.jpg" alt="Handwoven Chanderi Kurta" loading="lazy" />
+            <span class="product-badge">New</span>
+          </div>
+          <p class="product-name">Handwoven Chanderi Kurta</p>
+          <p class="product-price"><strong>₹4,800</strong></p>
+        </a>
+      </article>
+
+      <!-- Product 2 -->
+      <article class="product-card reveal d2">
+        <a href="/collections/pause.html" aria-label="Natural Dye Khadi Shirt">
+          <div class="product-card-img">
+            <img src="assets/SMR08544.jpg" alt="Natural Dye Khadi Shirt" loading="lazy" />
+          </div>
+          <p class="product-name">Natural Dye Khadi Shirt</p>
+          <p class="product-price"><strong>₹3,600</strong></p>
+        </a>
+      </article>
+
+      <!-- Product 3 -->
+      <article class="product-card reveal d3">
+        <a href="/collections/pause.html" aria-label="Viscose Linen Draped Kurta">
+          <div class="product-card-img">
+            <img src="assets/SMR08725m.jpg" alt="Viscose Linen Draped Kurta" loading="lazy" />
+            <span class="product-badge">New</span>
+          </div>
+          <p class="product-name">Viscose Linen Draped Kurta</p>
+          <p class="product-price"><strong>₹5,200</strong></p>
+        </a>
+      </article>
+
+      <!-- Product 4 -->
+      <article class="product-card reveal d4">
+        <a href="/collections/pause.html" aria-label="Handloom Ikat Co-ord Set">
+          <div class="product-card-img">
+            <img src="assets/SMR08790.jpg" alt="Handloom Ikat Co-ord Set" loading="lazy" />
+          </div>
+          <p class="product-name">Handloom Ikat Co-ord Set</p>
+          <p class="product-price"><strong>₹7,400</strong></p>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ██ BRAND STATEMENT ██ -->
+<section class="statement">
+  <div class="container">
+    <div class="statement-inner reveal">
+      <h2>You're allowed to move at your own pace.<br>Even if it is turtle pace.</h2>
+      <div class="statement-icon">
+        <img src="assets/Fursat_Icon_OIive_Green.svg" alt="Fursat icon" style="width:64px;height:64px;opacity:0.55;" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ██ COLLECTIONS ██ -->
+<section class="collections" id="collections">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-eyebrow">Curated for you</p>
+      <h2 class="sec-title">Shop by Category</h2>
+    </div>
+    <div class="collections-grid">
+
+      <a href="/collections/men.html" class="collection-tile reveal d1" aria-label="Shop Men">
+        <!-- Replace with your men's collection image -->
+        <img src="assets/SMR08843.jpg" alt="Men's handwoven collection" loading="lazy" />
+        <div class="collection-overlay">
+          <p class="collection-name">Men</p>
+          <span class="btn-outline" style="font-size:0.68rem;padding:10px 24px;">Shop Now</span>
+        </div>
+      </a>
+
+      <a href="/collections/best-sellers.html" class="collection-tile reveal d2" aria-label="Shop Best Sellers">
+        <img src="assets/SMR08544.jpg" alt="Best sellers collection" loading="lazy" />
+        <div class="collection-overlay">
+          <p class="collection-name">Best Sellers</p>
+          <span class="btn-outline" style="font-size:0.68rem;padding:10px 24px;">Shop Now</span>
+        </div>
+      </a>
+
+      <a href="/collections/women.html" class="collection-tile reveal d3" aria-label="Shop Women">
+        <img src="assets/SMR08687.jpg" alt="Women's handwoven collection" loading="lazy" />
+        <div class="collection-overlay">
+          <p class="collection-name">Women</p>
+          <span class="btn-outline" style="font-size:0.68rem;padding:10px 24px;">Shop Now</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ██ FEATURES ██ -->
+<section class="features">
+  <div class="container">
+    <div class="features-grid">
+
+      <div class="feature-item reveal d1">
+        <div class="feature-img">
+          <img src="assets/Features_Art_1.svg" alt="Handwoven" loading="lazy" style="width:80px;height:80px;" />
+        </div>
+        <h3 class="feature-title">Handwoven</h3>
+        <p class="feature-desc">Textiles we use are woven on handloom across different weaver clusters in India. Most are dyed at the yarn stage using natural or azo-free dyes.</p>
+      </div>
+
+      <div class="feature-item reveal d2">
+        <div class="feature-img">
+          <img src="assets/Features_Art_2.svg" alt="Conscious" loading="lazy" style="width:80px;height:80px;" />
+        </div>
+        <h3 class="feature-title">Conscious</h3>
+        <p class="feature-desc">We are conscious of the realities of the day and our work factors in fair practices — towards the weavers, the environment and our clients.</p>
+      </div>
+
+      <div class="feature-item reveal d3">
+        <div class="feature-img">
+          <img src="assets/Features_Art_3.svg" alt="Made on Order" loading="lazy" style="width:80px;height:80px;" />
+        </div>
+        <h3 class="feature-title">Made on Order</h3>
+        <p class="feature-desc">We put a piece of clothing together after receiving a confirmed order, rather than creating an inventory of standard sizing which often leads to overproduction.</p>
+      </div>
+
+      <div class="feature-item reveal d4">
+        <div class="feature-img">
+          <img src="assets/Features_Art_4.svg" alt="Familiar" loading="lazy" style="width:80px;height:80px;" />
+        </div>
+        <h3 class="feature-title">Familiar</h3>
+        <p class="feature-desc">Our clothes bear a sense of familiarity in them. There is a comfort that they bring along. They are easy to embrace, they make you feel at home.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ██ MONSOON BANNER ██ -->
+<div class="banner">
+  <picture>
+    <source media="(max-width:768px)" srcset="assets/SMR08521.jpg" />
+    <img src="assets/SMR08610.jpg" alt="The Monsoon Edit" loading="lazy" />
+  </picture>
+  <div class="banner-overlay">
+    <p class="banner-eyebrow">Now available</p>
+    <h2>The Monsoon Edit</h2>
+    <p>Crafted in breathable viscose linen blends and handwoven khadi, designed to flow with humid days, slow mornings, and rain washed evenings.</p>
+    <a href="/collections/monsoon-25.html" class="btn-outline">Shop Now</a>
+  </div>
+</div>
+
+<!-- ██ JOURNAL ██ -->
+<section class="journal" id="journal">
+  <div class="container">
+    <div class="journal-header reveal">
+      <div>
+        <p class="sec-eyebrow">Stories &amp; Ideas</p>
+        <h2 class="sec-title">Journal</h2>
+        <p style="color:rgba(245,240,230,0.6);font-size:0.9rem;margin-top:8px;">A look into who and what we're inspired by.</p>
+      </div>
+      <a href="/pages/journal.html" class="btn-text">View Journal →</a>
+    </div>
+    <div class="journal-grid">
+
+      <article class="journal-card reveal d1">
+        <a href="/pages/journal.html">
+          <div class="journal-card-img">
+            <img src="assets/fursat_ecom-122.jpg" alt="Sustainable Luxury in India" loading="lazy" />
+          </div>
+          <p class="journal-date">Aug 26</p>
+          <h3 class="journal-title">Sustainable Luxury in India — Why Handloom, Khadi, and Natural Textiles Are the Future of Fashion</h3>
+        </a>
+      </article>
+
+      <article class="journal-card reveal d2">
+        <a href="/pages/journal.html">
+          <div class="journal-card-img">
+            <img src="assets/SMR08725m_Cropped.jpg" alt="Khadi — India's Fabric of Freedom" loading="lazy" />
+          </div>
+          <p class="journal-date">Aug 26</p>
+          <h3 class="journal-title">Khadi — India's Fabric of Freedom, Now a Global Symbol of Sustainable Luxury</h3>
+        </a>
+      </article>
+
+      <article class="journal-card reveal d3">
+        <a href="/pages/journal.html">
+          <div class="journal-card-img">
+            <img src="assets/fursat_ecom-123.jpg" alt="Indian Handloom Heritage" loading="lazy" />
+          </div>
+          <p class="journal-date">Aug 26</p>
+          <h3 class="journal-title">Indian Handloom Heritage — The Timeless Weaves That Define Luxury</h3>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ██ PARALLAX ██ -->
+<div class="parallax-wrap" id="parallax-wrap">
+  <picture>
+    <source media="(max-width:768px)" srcset="assets/TLC01617.jpg" />
+    <img
+      class="parallax-img"
+      id="parallax-img"
+      src="assets/DSC00195.jpg"
+      alt="Fursat handwoven textiles"
+      loading="lazy"
+    />
+  </picture>
+</div>
+
+<!-- ██ VIDEO / PAUSE BANNER ██ -->
+<section class="video-banner">
+  <img
+    class="video-fallback"
+    src="assets/SMR08843.jpg"
+    alt="Pause — Pure Chanderi Silk"
+    loading="lazy"
+  />
+
+  <div class="video-overlay">
+    <h2>Pause, in pure flow</h2>
+    <p>Pure Chanderi silk. Soft on the skin. Effortless in movement.</p>
+    <a href="/collections/pause.html" class="btn-outline">Shop Pause</a>
+  </div>
+</section>
+
+<!-- ██ NEWSLETTER ██ -->
+<section class="newsletter" id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner reveal">
+      <h2>Stay in the Loop</h2>
+      <p>Subscribe to our newsletter and get 10% off your first order.</p>
+      <form class="newsletter-form" id="newsletter-form" novalidate>
+        <input type="email" placeholder="Your email address" aria-label="Email address" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter-consent">By subscribing you agree to our privacy policy. No spam, ever.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ██ FOOTER ██ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" class="logo-footer" aria-label="Fursat home">
+          <svg style="height:30px;width:auto;color:var(--cream)" fill="none" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" viewBox="0 0 350 210" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-151.470703-514.117187)"><path d="M177.640625,522.050781c-11.351563,0-20.585937,9.242188-20.585937,20.597657v173.527343h11.285156v-106.796875h29.890625v-11.292968h-29.890625v-55.4375c0-5.132813,4.171875-9.304688,9.300781-9.304688c5.132813,0,9.304687,4.171875,9.304687,9.304688v38.445312h11.285157v-38.445312c0-11.355469-9.234375-20.597657-20.589844-20.597657Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M246.472656,704.882812h-9.300781c-5.132813,0-9.300781-4.171874-9.300781-9.308593v-97.496094h-11.285156v97.496094c0,11.359375,9.234374,20.601562,20.585937,20.601562h20.589844v-118.089843h-11.289063v106.804687-.007813Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M296.703125,598.085938h-20.589844v118.089843h11.289063v-106.796875h9.300781c5.132813,0,9.300781,4.171875,9.300781,9.304688v14.152344h11.285156v-14.152344c0-11.355469-9.234374-20.597656-20.585937-20.597656Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M356.230469,598.085938c-11.351563,0-20.585938,9.242187-20.585938,20.597656v44.097656h29.886719v32.804688c0,5.132812-4.167969,9.304687-9.300781,9.304687s-9.300781-4.171875-9.300781-9.304687v-14.152344h-11.285157v14.152344c0,11.355468,9.234375,20.597656,20.585938,20.597656c11.355469,0,20.589843-9.242188,20.589843-20.597656v-44.097657h-29.890624v-32.804687c0-5.132813,4.167968-9.304688,9.300781-9.304688s9.300781,4.171875,9.300781,9.304688v14.144531h11.289062v-14.144531c0-11.355469-9.234374-20.597656-20.589843-20.597656Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M415.761719,598.085938c-11.351563,0-20.589844,9.242187-20.589844,20.597656v14.144531h11.289063v-14.144531c0-5.132813,4.167968-9.304688,9.300781-9.304688s9.300781,4.171875,9.300781,9.304688v32.804687h-29.890625v44.097657c0,11.355468,9.238281,20.597656,20.589844,20.597656h20.585937v-97.5c0-11.355469-9.234375-20.597656-20.585937-20.597656ZM425.0625,704.882812h-9.300781c-5.125,0-9.300781-4.171874-9.300781-9.308593v-32.800781h18.601562v42.109374Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M495.886719,581.105469v-11.292969h-29.890625v-47.761719c0,0-11.292969,0-11.292969,0v47.753907h-238.59375v11.289062h238.59375v114.480469c0,11.359375,9.234375,20.601562,20.589844,20.601562c11.351562,0,20.585937-9.242187,20.585937-20.601562v-38.445313h-11.285156v38.445313c0,5.136719-4.171875,9.308593-9.300781,9.308593-5.132813,0-9.304688-4.171874-9.304688-9.308593v-114.46875h29.898438Zm0,0" fill-rule="evenodd" fill="currentColor"/></g></svg>
+        </a>
+        <p>Luxury, handwoven, slow made clothing crafted for you. Ethically made in India with care for the weaver, the land, and the wearer.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/fursatlabel" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://facebook.com/fursatlabel" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://pinterest.com/fursatlabel" aria-label="Pinterest" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.17 1.22-5.17s-.31-.63-.31-1.56c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.58 2.26-.87 3.52-.25 1.05.52 1.9 1.55 1.9 1.86 0 3.29-1.96 3.29-4.79 0-2.5-1.8-4.25-4.37-4.25-2.98 0-4.73 2.23-4.73 4.54 0 .9.35 1.86.78 2.38.09.1.1.2.07.3l-.29 1.18c-.05.19-.16.23-.36.14-1.39-.65-2.26-2.68-2.26-4.32 0-3.51 2.55-6.74 7.36-6.74 3.86 0 6.86 2.75 6.86 6.42 0 3.83-2.41 6.9-5.76 6.9-1.13 0-2.19-.59-2.55-1.28l-.69 2.6c-.25.96-.93 2.17-1.39 2.9.97.3 2 .46 3.08.46 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Shop -->
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="/collections/all.html">New Arrivals</a></li>
+          <li><a href="/collections/women.html">Women</a></li>
+          <li><a href="/collections/men.html">Men</a></li>
+          <li><a href="/collections/best-sellers.html">Best Sellers</a></li>
+          <li><a href="/collections/monsoon-25.html">Monsoon Edit</a></li>
+          <li><a href="/collections/pause.html">Pause Collection</a></li>
+        </ul>
+      </div>
+
+      <!-- Information -->
+      <div class="footer-col">
+        <h5>Information</h5>
+        <ul>
+          <li><a href="/pages/about.html">About Fursat</a></li>
+          <li><a href="/pages/about.html">Our Weavers</a></li>
+          <li><a href="/pages/about.html">Sustainability</a></li>
+          <li><a href="/pages/journal.html">Journal</a></li>
+          <li><a href="/pages/size-guide.html">Size Guide</a></li>
+          <li><a href="/pages/about.html">Care Guide</a></li>
+        </ul>
+      </div>
+
+      <!-- Help -->
+      <div class="footer-col">
+        <h5>Help</h5>
+        <ul>
+          <li><a href="/pages/contact.html">Contact Us</a></li>
+          <li><a href="/pages/shipping-policy.html">Shipping Policy</a></li>
+          <li><a href="/pages/refund-policy.html">Return Policy</a></li>
+          <li><a href="/pages/contact.html">FAQ</a></li>
+          <li><a href="https://wa.me/919739283637" target="_blank" rel="noopener">WhatsApp Us</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Fursat Label. All rights reserved.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+        <a href="/pages/privacy-policy.html">Privacy Policy</a>
+        <a href="/pages/terms-of-service.html">Terms of Service</a>
+        <div class="footer-payment">
+          <span class="payment-badge">Visa</span>
+          <span class="payment-badge">Mastercard</span>
+          <span class="payment-badge">UPI</span>
+          <span class="payment-badge">RazorPay</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ██ WHATSAPP FAB ██ -->
+<a class="wa-fab" href="https://wa.me/919739283637" target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+  <div class="wa-ring"></div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<!-- ██ CART DRAWER ██ -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-drawer" id="cart-drawer" aria-label="Shopping cart" role="dialog" aria-modal="true">
+  <div class="cart-header">
+    <h3>Your Bag</h3>
+    <button class="cart-close" id="cart-close" aria-label="Close cart">×</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <p>Your bag is empty.<br>Add something beautiful.</p>
+    </div>
+  </div>
+  <div class="cart-footer" style="display:none" id="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cart-total-price">₹0</span></div>
+    <button class="cart-checkout">Proceed to Checkout</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── HEADER SCROLL ── */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── HAMBURGER ── */
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobile-menu');
+  ham.addEventListener('click', () => {
+    const open = ham.classList.toggle('open');
+    mob.classList.toggle('open', open);
+    mob.style.display = open ? 'flex' : 'none';
+    ham.setAttribute('aria-expanded', open);
+    mob.setAttribute('aria-hidden', !open);
+  });
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+    mob.style.display = 'none';
+  }));
+
+  /* ── HERO SLIDESHOW ── */
+  const slides = document.getElementById('hero-slides');
+  const dots = document.querySelectorAll('.hero-dot');
+  let current = 0, timer;
+
+  function goTo(n) {
+    current = (n + 2) % 2;
+    slides.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+      d.setAttribute('aria-selected', i === current);
+    });
+  }
+  dots.forEach(d => d.addEventListener('click', () => { clearInterval(timer); goTo(+d.dataset.slide); startTimer(); }));
+  function startTimer() { timer = setInterval(() => goTo(current + 1), 5000); }
+  startTimer();
+
+  /* ── CART DRAWER ── */
+  const cartBtn    = document.getElementById('cart-btn');
+  const cartClose  = document.getElementById('cart-close');
+  const cartOverlay= document.getElementById('cart-overlay');
+  const cartDrawer = document.getElementById('cart-drawer');
+  function openCart()  { cartDrawer.classList.add('open'); cartOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeCart() { cartDrawer.classList.remove('open'); cartOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+  cartBtn.addEventListener('click', openCart);
+  cartClose.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCart(); });
+
+  /* ── SCROLL REVEALS ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  /* ── PARALLAX ── */
+  const pImg = document.getElementById('parallax-img');
+  if (pImg) {
+    window.addEventListener('scroll', () => {
+      const wrap = document.getElementById('parallax-wrap');
+      const rect = wrap.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+        pImg.style.transform = `translateY(${pct * -30}%)`;
+      }
+    }, { passive: true });
+  }
+
+  /* ── NEWSLETTER FORM ── */
+  document.getElementById('newsletter-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = this.querySelector('input').value.trim();
+    if (!email || !email.includes('@')) return;
+    this.innerHTML = '<p style="color:var(--olive);font-weight:600;font-size:0.9rem;">Thank you for subscribing! Check your inbox for your 10% off code.</p>';
+  });
+
+  /* ── ANNOUNCE BAR CLOSE ── */
+  // handled inline
+
+})();
+</script>
+
+</body>
+</html>

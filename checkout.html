@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Checkout — Fursat</title>
+  <link rel="stylesheet" href="https://use.typekit.net/rkl7bpr.css"/>
+  <link rel="stylesheet" href="/assets/product.css"/>
+  <style>
+    .checkout-page{padding:48px 0 80px}
+    .checkout-page h1{font-family:var(--font-head);font-size:2rem;font-weight:400;margin-bottom:32px}
+    .checkout-layout{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
+    .section-title{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:6px;color:var(--ink-2)}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border:1px solid var(--border);background:transparent;font-family:var(--font-body);font-size:.9rem;outline:none;transition:border-color .2s}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--ink)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .order-summary{background:#fff;padding:28px;border:1px solid var(--border);position:sticky;top:100px}
+    .order-item{display:flex;gap:14px;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+    .order-item img{width:60px;height:75px;object-fit:cover;object-position:top}
+    .order-item-info{flex:1}
+    .order-item-name{font-size:.85rem;font-weight:500}
+    .order-item-price{font-size:.82rem;color:var(--muted);margin-top:2px}
+    .order-total-row{display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:10px}
+    .order-grand-total{display:flex;justify-content:space-between;font-size:1rem;font-weight:700;padding-top:14px;border-top:1px solid var(--border)}
+    .pay-btn{width:100%;margin-top:20px;padding:16px;background:var(--ink);color:var(--cream);border:none;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .2s}
+    .pay-btn:hover{background:var(--olive)}
+    .pay-btn:disabled{opacity:.5;cursor:not-allowed}
+    .secure-note{font-size:.72rem;color:var(--muted);text-align:center;margin-top:12px}
+    @media(max-width:768px){.checkout-layout{grid-template-columns:1fr}.order-summary{position:static}.form-row{grid-template-columns:1fr}}
+  </style>
+  <script src="/assets/cart.js" defer></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+<header id="site-header" style="background:rgba(245,240,230,.96);box-shadow:0 1px 0 var(--border)">
+  <div class="container"><div class="header-inner">
+    <a href="/" class="logo"><svg style="width:100%;height:36px" fill="none" viewBox="0 0 350 210" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-151.470703-514.117187)"><path d="M177.640625,522.050781c-11.351563,0-20.585937,9.242188-20.585937,20.597657v173.527343h11.285156v-106.796875h29.890625v-11.292968h-29.890625v-55.4375c0-5.132813,4.171875-9.304688,9.300781-9.304688c5.132813,0,9.304687,4.171875,9.304687,9.304688v38.445312h11.285157v-38.445312c0-11.355469-9.234375-20.597657-20.589844-20.597657Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M246.472656,704.882812h-9.300781c-5.132813,0-9.300781-4.171874-9.300781-9.308593v-97.496094h-11.285156v97.496094c0,11.359375,9.234374,20.601562,20.585937,20.601562h20.589844v-118.089843h-11.289063v106.804687-.007813Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M296.703125,598.085938h-20.589844v118.089843h11.289063v-106.796875h9.300781c5.132813,0,9.300781,4.171875,9.300781,9.304688v14.152344h11.285156v-14.152344c0-11.355469-9.234374-20.597656-20.585937-20.597656Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M356.230469,598.085938c-11.351563,0-20.585938,9.242187-20.585938,20.597656v44.097656h29.886719v32.804688c0,5.132812-4.167969,9.304687-9.300781,9.304687s-9.300781-4.171875-9.300781-9.304687v-14.152344h-11.285157v14.152344c0,11.355468,9.234375,20.597656,20.585938,20.597656c11.355469,0,20.589843-9.242188,20.589843-20.597656v-44.097657h-29.890624v-32.804687c0-5.132813,4.167968-9.304688,9.300781-9.304688s9.300781,4.171875,9.300781,9.304688v14.144531h11.289062v-14.144531c0-11.355469-9.234374-20.597656-20.589843-20.597656Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M415.761719,598.085938c-11.351563,0-20.589844,9.242187-20.589844,20.597656v14.144531h11.289063v-14.144531c0-5.132813,4.167968-9.304688,9.300781-9.304688s9.300781,4.171875,9.300781,9.304688v32.804687h-29.890625v44.097657c0,11.355468,9.238281,20.597656,20.589844,20.597656h20.585937v-97.5c0-11.355469-9.234375-20.597656-20.585937-20.597656ZM425.0625,704.882812h-9.300781c-5.125,0-9.300781-4.171874-9.300781-9.308593v-32.800781h18.601562v42.109374Zm0,0" fill-rule="evenodd" fill="currentColor"/><path d="M495.886719,581.105469v-11.292969h-29.890625v-47.761719h-11.292969v47.753907h-238.59375v11.289062h238.59375v114.480469c0,11.359375,9.234375,20.601562,20.589844,20.601562c11.351562,0,20.585937-9.242187,20.585937-20.601562v-38.445313h-11.285156v38.445313c0,5.136719-4.171875,9.308593-9.300781,9.308593-5.132813,0-9.304688-4.171874-9.304688-9.308593v-114.46875h29.898438Zm0,0" fill-rule="evenodd" fill="currentColor"/></g></svg></a>
+    <a href="/cart.html" style="font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">← Back to Cart</a>
+  </div></div>
+</header>
+
+<main class="container checkout-page">
+  <h1>Checkout</h1>
+  <div class="checkout-layout">
+
+    <form id="checkout-form">
+      <p class="section-title">Contact</p>
+      <div class="form-group"><label>Full Name</label><input type="text" id="name" required placeholder="Your full name"/></div>
+      <div class="form-row">
+        <div class="form-group"><label>Email</label><input type="email" id="email" required placeholder="you@email.com"/></div>
+        <div class="form-group"><label>Phone</label><input type="tel" id="phone" required placeholder="+91 98765 43210"/></div>
+      </div>
+
+      <p class="section-title" style="margin-top:32px">Shipping Address</p>
+      <div class="form-group"><label>Address Line 1</label><input type="text" id="addr1" required placeholder="House/Flat number, Street"/></div>
+      <div class="form-group"><label>Address Line 2</label><input type="text" id="addr2" placeholder="Area, Landmark (optional)"/></div>
+      <div class="form-row">
+        <div class="form-group"><label>City</label><input type="text" id="city" required placeholder="City"/></div>
+        <div class="form-group"><label>PIN Code</label><input type="text" id="pin" required placeholder="560001"/></div>
+      </div>
+      <div class="form-group"><label>State</label><input type="text" id="state" required placeholder="State"/></div>
+    </form>
+
+    <div class="order-summary">
+      <p class="section-title">Your Order</p>
+      <div id="order-items"></div>
+      <div class="order-total-row"><span>Subtotal</span><span id="subtotal-val"></span></div>
+      <div class="order-total-row"><span>Shipping</span><span id="shipping-val"></span></div>
+      <div class="order-grand-total"><span>Total</span><span id="grand-total-val"></span></div>
+      <button class="pay-btn" id="pay-btn" onclick="startPayment()">Pay with Razorpay</button>
+      <p class="secure-note">🔒 Secure payment via Razorpay · UPI · Cards · NetBanking · COD available via WhatsApp</p>
+    </div>
+  </div>
+</main>
+
+<script>
+/* ── Replace with your Razorpay Key ID from razorpay.com/dashboard ── */
+const RAZORPAY_KEY = 'YOUR_RAZORPAY_KEY_ID';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cart = getCart();
+  if (!cart.length) { window.location.href = '/cart.html'; return; }
+
+  const total = cartTotal();
+  const shipping = total >= 3000 ? 0 : 150;
+  const grand = total + shipping;
+
+  document.getElementById('order-items').innerHTML = cart.map(i => `
+    <div class="order-item">
+      <img src="/assets/products/${i.image}" alt="${i.title}" onerror="this.src='/assets/SMR08790.jpg'"/>
+      <div class="order-item-info">
+        <p class="order-item-name">${i.title}</p>
+        <p class="order-item-price">Qty: ${i.qty} · ₹${(i.price*i.qty).toLocaleString('en-IN')}</p>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('subtotal-val').textContent = '₹' + total.toLocaleString('en-IN');
+  document.getElementById('shipping-val').textContent = shipping === 0 ? 'Free' : '₹' + shipping;
+  document.getElementById('grand-total-val').textContent = '₹' + grand.toLocaleString('en-IN');
+});
+
+function startPayment() {
+  const form = document.getElementById('checkout-form');
+  if (!form.reportValidity()) return;
+
+  const name  = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value.replace(/\D/g,'');
+  const cart  = getCart();
+  const total = cartTotal();
+  const shipping = total >= 3000 ? 0 : 150;
+  const grand = (total + shipping) * 100; // Razorpay uses paise
+
+  if (RAZORPAY_KEY === 'YOUR_RAZORPAY_KEY_ID') {
+    alert('Razorpay key not configured. Please add your Razorpay Key ID in checkout.html.');
+    return;
+  }
+
+  const options = {
+    key: RAZORPAY_KEY,
+    amount: grand,
+    currency: 'INR',
+    name: 'Fursat',
+    description: `Order (${cart.length} item${cart.length > 1 ? 's' : ''})`,
+    image: '/assets/Fursat_Icon_Dynamic.png',
+    prefill: { name, email, contact: phone },
+    theme: { color: '#1A1814' },
+    handler: function(response) {
+      // Payment successful — save order details and redirect
+      const order = {
+        id: response.razorpay_payment_id,
+        items: cart,
+        total: grand / 100,
+        name, email, phone,
+        address: [
+          document.getElementById('addr1').value,
+          document.getElementById('addr2').value,
+          document.getElementById('city').value,
+          document.getElementById('pin').value,
+          document.getElementById('state').value
+        ].filter(Boolean).join(', '),
+        date: new Date().toISOString()
+      };
+      localStorage.setItem('fursat_last_order', JSON.stringify(order));
+      localStorage.removeItem('fursat_cart');
+      window.location.href = '/order-success.html';
+    }
+  };
+  new Razorpay(options).open();
+}
+</script>
+</body></html>
