@@ -33,6 +33,13 @@ header.scrolled{background:rgba(245,240,230,.96);backdrop-filter:blur(20px);box-
 .mobile-menu{position:fixed;inset:0;top:72px;z-index:500;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:32px 24px}
 .mobile-menu a{font-size:1.5rem;font-family:var(--font-head);color:var(--ink);padding:14px 0;width:100%;text-align:center;border-bottom:1px solid var(--border)}
 
+/* LOGO TEXT */
+.logo-link{text-decoration:none;display:flex;align-items:center}
+.logo-text{font-family:var(--font-head);font-size:1.5rem;font-weight:400;letter-spacing:.06em;color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-icon{background:none;border:none;font-size:1rem;color:var(--ink);display:flex;align-items:center;position:relative;transition:opacity .2s;cursor:pointer}
+.nav-icon:hover{opacity:.6}
+
 /* BREADCRUMB */
 .breadcrumb{font-size:.75rem;letter-spacing:.06em;color:var(--muted);padding:20px 0 0;text-transform:uppercase}
 .breadcrumb a{color:var(--muted)}
