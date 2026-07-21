@@ -23,7 +23,14 @@
     <h1 class="col-title">Women</h1>
     <p class="col-count">16 items</p>
   </div>
-  <div class="products-grid"><article class="product-card">
+  <div id="collection-controls" style="display:flex;align-items:center;justify-content:flex-end;margin-bottom:24px;gap:12px">
+  <label for="sort-select" style="font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#8A7F70">Sort by</label>
+  <select id="sort-select" style="border:1px solid #DDD5C4;background:#F5F0E6;padding:8px 12px;font-size:.82rem;color:#1A1814;cursor:pointer;border-radius:2px">
+    <option value="default">Featured</option>
+    <option value="price-asc">Price: Low to High</option>
+    <option value="price-desc">Price: High to Low</option>
+  </select>
+</div><div class="products-grid"><article class="product-card">
   <a href="products/leher-pants.html">
     <div class="card-img"><img src="assets/products/TLC01667_Cropped_1.jpg" alt="Leher Pants" loading="lazy"/></div>
     <p class="card-name">Leher Pants</p>

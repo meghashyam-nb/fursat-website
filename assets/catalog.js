@@ -1,0 +1,28 @@
+/* Fursat — Product catalog (used for related products, wishlist, etc.) */
+window.FURSAT_CATALOG = [
+  { handle:"echo-pants", title:"Echo Pants", price:2499, img:"assets/products/fursat_ecom-059.jpg" },
+  { handle:"poise-skirt", title:"Poise Skirt", price:2699, img:"assets/products/fursat_ecom-072.jpg" },
+  { handle:"kairo-pants", title:"Kairo Pants", price:2499, img:"assets/products/fursat_ecom-067.jpg" },
+  { handle:"noir-pants", title:"Noir Pants", price:2199, img:"assets/products/fursat_ecom-082_66e8a281-8d9d-4794-b085-626535ab26d0.jpg" },
+  { handle:"beige-hand-illustrated-print-shirt", title:"Waraq Shirt", price:2999, img:"assets/products/fursat_ecom-117.jpg" },
+  { handle:"black-abstract-print-shirt", title:"Safar Shirt", price:2999, img:"assets/products/fursat_ecom-120.jpg" },
+  { handle:"v-neck-shirt", title:"Arlo Top", price:2499, img:"assets/products/fursat_ecom-082.jpg" },
+  { handle:"shirt-dress", title:"Dune Dress", price:3250, img:"assets/products/fursat_ecom-100.jpg" },
+  { handle:"layered-strapless-dress", title:"Halo Dress", price:3600, img:"assets/products/fursat_ecom-106.jpg" },
+  { handle:"leaf-top", title:"Solace Top", price:3250, img:"assets/products/fursat_ecom-104.jpg" },
+  { handle:"strappy-dress-in-a-deep-ruby-red", title:"Sol Dress", price:3500, img:"assets/products/fursat_ecom-091.jpg" },
+  { handle:"the-crimson-poise-set", title:"Vira Top", price:2799, img:"assets/products/fursat_ecom-072_0c1deb1e-e5e2-46eb-8ff6-24bdde85f84d.jpg" },
+  { handle:"the-sand-drape-set", title:"Kairo Top", price:2899, img:"assets/products/fursat_ecom-067_530874cf-5ba6-450e-a482-490a0908d41d.jpg" },
+  { handle:"the-ivory-whisper-set", title:"Shore Top", price:2299, img:"assets/products/fursat_ecom-059_229968a3-64cf-4f76-be0c-79f15d22724b.jpg" },
+  { handle:"jhilmil-top", title:"Jhilmil Top", price:2999, img:"assets/products/TLC01667_Cropped.jpg" },
+  { handle:"boond-skort", title:"Boond Skort", price:2499, img:"assets/products/TLC01650_Cropped_1.jpg" },
+  { handle:"sia-shorts", title:"Sia Skort", price:2350, img:"assets/products/TLC01554_Cropped_1.jpg" },
+  { handle:"titli-dress", title:"Titli Dress", price:3100, img:"assets/products/TLC01617.jpg" },
+  { handle:"patang-shirt", title:"Patang Shirt", price:2850, img:"assets/products/TLC01380_Cropped.jpg" },
+  { handle:"leher-pants", title:"Leher Pants", price:3499, img:"assets/products/TLC01667_Cropped_1.jpg" },
+  { handle:"gur-top", title:"Gur Top", price:3499, img:"assets/products/TLC01559_Cropped.jpg" },
+  { handle:"ambo-pants", title:"Ambo Pants", price:3499, img:"assets/products/TLC01463_Cropped_1.jpg" },
+  { handle:"gilli-shirt", title:"Gilli Shirt", price:3499, img:"assets/products/TLC01514_Cropped.jpg" },
+  { handle:"chhupa-chhupi-co-ord-set", title:"Chhupa-Chhupi Co-ord Set", price:4999, img:"assets/products/TLC01440.jpg" },
+  { handle:"gulmohar-dress", title:"Gulmohar Dress", price:3600, img:"assets/products/TLC01269.jpg" }
+];
