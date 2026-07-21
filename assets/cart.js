@@ -63,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.style.display = open ? 'flex' : 'none';
     ham.setAttribute('aria-expanded', open);
   });
-  // Cart btn
-  document.getElementById('cart-btn')?.addEventListener('click', () => window.location.href = '/cart.html');
+  // Cart btn — resolve against base tag so it works on any host/subdirectory
+  document.getElementById('cart-btn')?.addEventListener('click', () => {
+    const a = document.createElement('a'); a.href = 'cart.html';
+    window.location.href = a.href;
+  });
 });

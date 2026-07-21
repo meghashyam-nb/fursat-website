@@ -611,20 +611,28 @@
       .hamburger { display: flex; }
       .logo { position: static; transform: none; }
       .header-inner { position: relative; }
-      .collections-grid { grid-template-columns: 1fr; }
-      .collection-tile { aspect-ratio: 3/2; }
+      .collections-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .collection-tile { aspect-ratio: 2/3; }
       .journal-grid { grid-template-columns: 1fr; }
-      .banner { height: 55vh; }
-      .video-banner { height: 70vh; }
-      .hero { height: 85vh; }
-      .footer-grid { grid-template-columns: 1fr; }
+      .banner { height: 50vh; }
+      .video-banner { height: 60vh; }
+      .hero { height: 75vh; min-height: 480px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .statement { padding: 80px 0; }
+      .new-arrivals { padding: 60px 0; }
+      .collections { padding: 60px 0; }
     }
     @media (max-width: 560px) {
-      .container { padding: 0 20px; }
+      .container { padding: 0 16px; }
       .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .newsletter-form { flex-direction: column; }
       .newsletter-form input { border-right: 1px solid var(--border); border-bottom: none; }
-      .features-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .features-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .hero { height: 65vh; min-height: 420px; }
+      .hero-content h1 { font-size: 1.6rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .collections-grid { grid-template-columns: 1fr; }
+      .collection-tile { aspect-ratio: 3/2; }
     }
   </style>
 </head>

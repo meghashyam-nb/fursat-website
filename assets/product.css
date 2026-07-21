@@ -75,7 +75,7 @@ header.scrolled{background:rgba(245,240,230,.96);backdrop-filter:blur(20px);box-
 
 /* FOOTER */
 .site-footer{background:var(--ink);color:var(--cream);padding:60px 0 32px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
 .footer-brand-name{font-family:var(--font-head);font-size:1.4rem;margin-bottom:10px}
 .footer-tagline{font-size:.82rem;color:rgba(245,240,230,.6);line-height:1.6;margin-bottom:12px}
 .footer-insta{font-size:.78rem;letter-spacing:.08em;color:rgba(245,240,230,.7)}
@@ -90,14 +90,22 @@ header.scrolled{background:rgba(245,240,230,.96);backdrop-filter:blur(20px);box-
 .wa-fab{position:fixed;bottom:28px;right:28px;z-index:800;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,.25)}
 
 /* RESPONSIVE */
-@media(max-width:900px){
-  .product-layout{grid-template-columns:1fr;gap:32px}
+@media(max-width:1024px){
   .footer-grid{grid-template-columns:1fr 1fr}
 }
+@media(max-width:900px){
+  .product-layout{grid-template-columns:1fr;gap:32px}
+}
 @media(max-width:640px){
-  .container{padding:0 20px}
+  .container{padding:0 16px}
   .nav-left{display:none}
   .hamburger{display:flex}
   .gallery-thumbs{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .product-title{font-size:1.5rem}
+  .add-to-cart-btn,.whatsapp-order{padding:14px}
+}
+@media(max-width:480px){
   .footer-grid{grid-template-columns:1fr}
+  .wa-fab{bottom:16px;right:16px;width:46px;height:46px}
 }
